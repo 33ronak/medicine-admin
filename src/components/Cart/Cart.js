@@ -30,7 +30,7 @@ const Cart = () => {
                         cart.map((item, index) => (
                             <div key={index}>
                                 <h4>{item.name}</h4>
-                                <p>Price: ${item.price}</p>
+                                <p>Price: {item.price}</p>
                             </div>
                         ))
                     )}

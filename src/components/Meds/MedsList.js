@@ -16,7 +16,7 @@ const MedsList = () => {
                     <div className="meds-item" key={index}>
                         <span className="meds-name">{product.name}</span>
                         <span className="meds-description">{product.description}</span>
-                        <span className="meds-price">${product.price.toFixed(2)}</span>
+                        <span className="meds-price"> {product.price.toFixed(2)}</span>
                         <span className="meds-quantity">{product.quantity}</span>
                         <div className="meds-actions">
                             <button onClick={() => addToCart(index)} disabled={product.quantity === 0}>
