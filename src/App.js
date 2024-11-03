@@ -1,10 +1,10 @@
 import React from "react";
-import ProductForm from "./components/ProductForm";
+import MedsForm from "./components/MedsForm";
 
-function App() {
+const App = () => {
   return (
     <div>
-      <ProductForm/>
+      <MedsForm />
     </div>
   );
 
