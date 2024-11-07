@@ -1,10 +1,11 @@
-import { createContext, useContext } from "react";
+import React from "react";
 
-const ProductContext = createContext();
-
-export const useProductContext = () => {
-    const context = useContext(ProductContext);
-    return context;
-};
+const ProductContext = React.createContext({
+  products: [],
+  cart: [],
+  addProduct: (product) => {},
+  addToCart: (index) => {},
+  deleteProduct: (index) => {},
+});
 
 export default ProductContext;

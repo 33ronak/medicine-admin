@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import "./Portal.css"
 
 const Portal = ({ children, onClose }) => {
     const el = useRef(document.createElement("div"));

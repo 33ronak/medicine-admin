@@ -1,19 +1,17 @@
 import React from "react";
-import ProductProvider from "./store/ProductProvider";
-import MedsForm from "./components/Meds/MedsForm";
-import MedsList from "./components/Meds/MedsList";
-import Cart from "./components/Cart/Cart";
+import ProductProvider from "./store/ProductProvider.js";
+import MedsForm from "./components/Meds/MedsForm.js";
+import MedsList from "./components/Meds/MedsList.js";
+import Cart from "./components/Cart/Cart.js";
 
-const App = () => {
+function App() {
     return (
         <ProductProvider>
-            <div>
-                <Cart />
-                <MedsForm />
-                <MedsList />
-            </div>
+            <MedsForm />
+            <MedsList />
+            <Cart />
         </ProductProvider>
     );
-};
+}
 
 export default App;

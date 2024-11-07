@@ -6,25 +6,44 @@ const ProductProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
     const addProduct = (product) => {
-        setProducts([...products, product]);
+        setProducts((prevProducts) => [...prevProducts, product]);
     };
 
-    const addToCart = (index) => {
-        const updatedProducts = [...products];
-        if (updatedProducts[index].quantity > 0) {
-            updatedProducts[index].quantity -= 1;
-            setProducts(updatedProducts);
-            setCart([...cart, updatedProducts[index]]);
-        }
+    const addToCart = (id) => {
+        setProducts((prevProducts) => {
+            const updatedProducts = [];
+            let productToAdd = null;
+    
+            const newProducts = prevProducts.map((product) => {
+                if (product.id === id && product.quantity > 0) {
+                    productToAdd = { ...product, quantity: 1 }; 
+                    return { ...product, quantity: product.quantity - 1 }; 
+                }
+                return product;
+            });
+
+            if (productToAdd) {
+                setCart((prevCart) => [...prevCart, productToAdd]);
+            }
+            return newProducts;
+        });
+    };
+    
+
+    const deleteProduct = (id) => {
+        setProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
     };
 
-    const deleteProduct = (index) => {
-        const updatedProducts = products.filter((_, i) => i !== index);
-        setProducts(updatedProducts);
+    const contextValue = {
+        products,
+        cart,
+        addProduct,
+        addToCart,
+        deleteProduct,
     };
 
     return (
-        <ProductContext.Provider value={{ products, addProduct, addToCart, deleteProduct, cart }}>
+        <ProductContext.Provider value={contextValue}>
             {children}
         </ProductContext.Provider>
     );
