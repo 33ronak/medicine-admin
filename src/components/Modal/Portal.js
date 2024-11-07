@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { createPortal } from "react-dom";
-import "./Portal.css"
+import ReactDOM from "react-dom";
+import "./Portal.css";
 
 const Portal = ({ children, onClose }) => {
     const el = useRef(document.createElement("div"));
@@ -13,9 +13,9 @@ const Portal = ({ children, onClose }) => {
         };
     }, []);
 
-    return createPortal(
+    return ReactDOM.createPortal(
         <div className="portal-overlay" onClick={onClose}>
-            <div className="portal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="portal-content" onClick={(event) => event.stopPropagation()}>
                 {children}
             </div>
         </div>,
